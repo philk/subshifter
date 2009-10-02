@@ -35,7 +35,12 @@ class Timecode
     shift = (shift_split[0] * 1000) + shift_split[1]
   end
 
-  def shifter()
+  def shift_time(direction)
+    if direction == "forward"
+      shift_forward
+    elsif direction == "backward"
+      shift_backward
+    end
     newms = (@seconds * 1000) + @milliseconds + @shift
     array = [@hours, @minutes, newms / 1000, newms % 1000]
     if array[2] >= 60
@@ -61,13 +66,19 @@ class Timecode
     Timecode.new(array)
   end
 
-  def shift_forward(input)
-    self.shift = input
-    shifter
+  def shift_forward
+    @shift
   end
-  def shift_backward(input)
-    self.shift = input
+
+  def shift_backward
     @shift = @shift * -1
-    shifter
+  end
+
+  def negative?
+    if @time_array.select { |i| i < 0}.empty?
+      return false
+    else
+      return true
+    end
   end
 end

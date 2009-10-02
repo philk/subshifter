@@ -35,22 +35,39 @@ describe Timecode, ".shift_calc" do
   end
 end
 
-describe Timecode, ".shift" do
+describe Timecode, ".shift_time" do
   before(:each) do
     @timecode = Timecode.new("01:19:25,125")
+    @timecode.shift = "20,150"
   end
   it "should work" do
-    @timecode.shift = "20,150"
     @timecode.shift.should == 20150
   end
 
   it "should return a new timecode" do
-    @timecode.shift_forward("20,150").should be_an_instance_of Timecode
+    @timecode.shift_time("forward").should be_an_instance_of Timecode
   end
   it "should shift the time" do
-    @timecode.shift_forward("20,150").to_s.should == Timecode.new("01:19:45,275").to_s
+    @timecode.shift_time("forward").to_s.should == Timecode.new("01:19:45,275").to_s
   end
   it "should shift time backward" do
-    @timecode.shift_backward("50,300").to_s.should == Timecode.new("01:18:34,825").to_s
+    @timecode.shift_time("backward").to_s.should == Timecode.new("01:19:04,975").to_s
+  end
+end
+
+describe Timecode, ".negative?" do
+  before(:each) do
+    @timecode = Timecode.new("00:00:10:,125")
+    @timecode.shift = "20,150"
+  end
+  it "should be negative" do
+    code = @timecode.shift_time("backward")
+    puts code
+    code.negative?.should be_true
+  end
+  it "should be positive" do
+    code = @timecode.shift_time("forward")
+    puts code
+    code.negative?.should be_false
   end
 end
