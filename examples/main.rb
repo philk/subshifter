@@ -1,6 +1,5 @@
 require "optparse"
-require "pp"
-require 'lib/timecode.rb'
+require File.expand_path(File.dirname(__FILE__) + "./lib/subshifter.rb")
 
 # Options Parsing
 options = {}
