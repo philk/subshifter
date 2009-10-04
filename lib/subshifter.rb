@@ -1,7 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + "/timecode.rb")
 
+# Class for dealing with the actual subtitle file.
 class Subshifter
   attr_accessor :filename, :infile, :outfile, :shift_value, :direction
+  # Expects and option hash from OptParse
+  # @param [Hash] OptParse hash.
   def initialize(options)
     @filename = options[:infile]
     @shift_value = options[:time]
@@ -16,6 +19,7 @@ class Subshifter
     end
   end
 
+  # Does the actual processing of the subtitle file
   def process
     regex = Regexp.new(/\d+:\d+:\d+,\d+.*/)
     @infile.each do |line|

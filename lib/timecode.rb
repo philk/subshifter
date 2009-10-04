@@ -2,6 +2,7 @@
 class Timecode
   attr_accessor :hours, :minutes, :seconds, :milliseconds, :shift
   # Only requires a timecode, can be either a string or array
+  # @param [String] string in format "hh:mm:ss,ms"
   def initialize(timecode)
     @timecode = timecode
     if @timecode.is_a?(String)
