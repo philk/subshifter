@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require "optparse"
 require File.expand_path(File.dirname(__FILE__) + "./lib/subshifter.rb")
 
