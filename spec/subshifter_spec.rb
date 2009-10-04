@@ -1,8 +1,12 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require File.expand_path(File.join(File.dirname(__FILE__), 'spec_helper'))
+
 
 describe Subshifter do
   before(:all) do
-    @sub = Subshifter.new("samples/himym205.srt", "10,105")
+    @samplein = File.expand_path(File.join(File.dirname(__FILE__), "..", "samples", "SurfsUp.srt"))
+    @sampleout = File.expand_path(File.join(File.dirname(__FILE__), "..", "samples", "SurfsUp-shifted.srt"))
+    options = {:infile => @samplein, :time => "10,105", :outfile => @sampleout, :force => true}
+    @sub = Subshifter.new(options)
   end
 
   it do
@@ -10,7 +14,7 @@ describe Subshifter do
   end
 
   it "should have a filename" do
-    @sub.filename.should == "samples/himym205.srt"
+    @sub.filename.should == @samplein
   end
 
   it "should have a shift_value" do
@@ -18,10 +22,10 @@ describe Subshifter do
   end
 
   it "should have lines" do
-    @sub.file.should_not be_false
+    @sub.infile.should_not be_false
   end
 
   it "should write a file" do
-    @sub.write be_true
+    @sub.outfile.should be_true
   end
 end

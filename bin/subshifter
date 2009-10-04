@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require "optparse"
-require File.expand_path(File.dirname(__FILE__) + "./lib/subshifter.rb")
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "lib" "subshifter"))
 
 # Options Parsing
 options = {}

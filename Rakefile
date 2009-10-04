@@ -7,7 +7,7 @@ begin
     gem.name = "subshifter"
     gem.executables = "subshifter"
     gem.summary = %Q{Subtitle shifting challenge from RubyLearning}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.description = %Q{Short program to shift timecodes in srt files}
     gem.email = "me@philkates.com"
     gem.homepage = "http://github.com/philk/subshifter"
     gem.authors = ["Phil Kates"]

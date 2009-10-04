@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + "/timecode.rb")
+require File.expand_path(File.join(File.dirname(__FILE__), "timecode"))
 
 # Class for dealing with the actual subtitle file.
 class Subshifter
@@ -14,7 +14,7 @@ class Subshifter
     if File.exist?(outfile) && !options[:force]
       raise "Output file already exists"
     else
-      puts "file doesn't exist"
+      puts "Creating #{outfile}" 
       @outfile = File.open(outfile, 'w')
     end
   end

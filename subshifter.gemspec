@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["Phil Kates"]
   s.date = %q{2009-10-04}
   s.default_executable = %q{subshifter}
-  s.description = %q{TODO: longer description of your gem}
+  s.description = %q{Short program to shift timecodes in srt files}
   s.email = %q{me@philkates.com}
   s.executables = ["subshifter"]
   s.extra_rdoc_files = [
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "autotest/discover.rb",
-     "bin/subshifter.rb",
+     "bin/subshifter",
      "examples/main.rb",
      "lib/subshifter.rb",
      "lib/timecode.rb",
@@ -35,7 +35,8 @@ Gem::Specification.new do |s|
      "spec/helper.rb",
      "spec/spec_helper.rb",
      "spec/subshifter_spec.rb",
-     "spec/timecode_spec.rb"
+     "spec/timecode_spec.rb",
+     "subshifter.gemspec"
   ]
   s.homepage = %q{http://github.com/philk/subshifter}
   s.rdoc_options = ["--charset=UTF-8"]
