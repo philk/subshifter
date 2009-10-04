@@ -22,32 +22,20 @@ OptionParser.new do |opts|
     end
   end
 
+  opts.on("-f", "--force", "Force overwrite output file") do |f|
+    options[:force] = f
+  end
+
   opts.on_tail("-?", "-h", "--help", "Show this message") do
     puts opts
     exit
   end
 end.parse!
 
-operation = options[:operation]
-shift_value = options[:time]
+options[:infile] = ARGV[0]
+options[:outfile] = ARGV[1]
 
-# File Operations
-srtfile = IO.readlines(ARGV[0])
-  
-regex = Regexp.new(/\d+:\d+:\d+,\d+.*/)
-  
-srtfile.each do |line|
-  if line.match(regex)
-    times = line.match(/(\d+:\d+:\d+,\d+) --> (\d+:\d+:\d+,\d+)/)
-    time_start = Timecode.new(times[1])
-    time_start.shift = shift_value
-    new_start = time_start.shift_time(operation)
-    unless new_start.negative?
-      puts "Time Start: #{time_start.to_s} -> New TS: #{new_start}"
-      time_end = Timecode.new(times[2])
-      time_end.shift = shift_value
-      new_end = time_end.shift_time(operation)
-      puts "Time End: #{time_end.to_s} -> New TE: #{new_end}"
-    end
-  end
-end
+puts options[:force]
+
+test = Subshifter.new(options)
+test.process
