@@ -5,6 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "subshifter"
+    gem.executables = "subshifter"
     gem.summary = %Q{Subtitle shifting challenge from RubyLearning}
     gem.description = %Q{TODO: longer description of your gem}
     gem.email = "me@philkates.com"
