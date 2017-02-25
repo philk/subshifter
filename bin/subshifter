@@ -39,17 +39,14 @@ OptionParser.new do |opts|
     puts opts
     exit
   end
-  unless options[:operation] && options[:time] && options[:infile] && options[:outfile]
-    puts "Must specify operation, time, infile, and outfile" 
-    puts opts
-    exit
-  end
 end.parse!
 
-options[:infile] = ARGV[0]
-options[:outfile] = ARGV[1]
-
-puts options[:force]
+unless options[:operation] && options[:time] && options[:infile] && options[:outfile]
+  puts "Must specify operation, time, infile, and outfile" 
+  puts opts
+  exit
+end
 
 test = Subshifter.new(options)
 test.process
+
